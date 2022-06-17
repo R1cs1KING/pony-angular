@@ -1,5 +1,5 @@
 <div>
-  <div ng-if="!isGameOn">
+  <div *ngIf="!isGameOn">
     <form class="form-details" [formGroup]="mazeForm" role="form" (ngSubmit)="submitMaze(mazeForm.value)">
       <div class="row input-label">
         <label class="form-label" for="MazeWidth">Maze width</label>
