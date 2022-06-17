@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MazeComponent } from './maze/maze.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MazeComponent
   ],
   imports: [
     BrowserModule,
