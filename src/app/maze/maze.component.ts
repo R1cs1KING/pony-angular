@@ -14,6 +14,7 @@ export class MazeComponent implements OnInit {
   public mazeForm: FormGroup;
   mazeId:string = "";
   private baseURL:string = "https://ponychallenge.trustpilot.com/pony-challenge/maze";
+  mazeMap: string = "";
 
   constructor(fb: FormBuilder, private http: HttpClient) {
     this.mazeForm = fb.group({
@@ -31,12 +32,36 @@ export class MazeComponent implements OnInit {
     console.log(data);
     console.log(data.MazePlayerName);
 
+    // need to map the data, because these are the values on the API, but FormBuilder group does not support the usage of "-"
     this.http.post<any>(this.baseURL, {
       "maze-width" : data.MazeWidth,
       "maze-height" : data.MazeHeight,
       "maze-player-name" : data.MazePlayerName,
       "difficulty" : data.Difficulty
-      }).subscribe((res) => console.log(res));
+      }).subscribe({
+        next: data => {
+          console.log(data);
+          this.mazeId = data.maze_id;
+          this.printMaze();
+          this.isGameOn = true;
+        },
+        error: error => {
+          var errorMessage = error.message;
+          console.log(errorMessage);
+        }
+      });
+  }
+
+  printMaze(): void {
+    this.http.get(this.baseURL + "/" + this.mazeId + "/print", {responseType: 'text'}).subscribe({
+      next: data => {
+        this.mazeMap = data;
+      },
+      error: error => {
+        var errorMessage = error.message;
+        console.log(errorMessage);
+      }
+    });
   }
 
 }
