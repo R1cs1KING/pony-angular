@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-maze',
@@ -12,8 +13,9 @@ export class MazeComponent implements OnInit {
   isGameOn:boolean = false;
   public mazeForm: FormGroup;
   mazeId:string = "";
+  private baseURL:string = "https://ponychallenge.trustpilot.com/pony-challenge/maze";
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private http: HttpClient) {
     this.mazeForm = fb.group({
       MazeWidth : new FormControl(Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])),
       MazeHeight : new FormControl(Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])),
@@ -25,8 +27,16 @@ export class MazeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitMaze() {
+  submitMaze(data:any) {
+    console.log(data);
+    console.log(data.MazePlayerName);
 
+    this.http.post<any>(this.baseURL, {
+      "maze-width" : data.MazeWidth,
+      "maze-height" : data.MazeHeight,
+      "maze-player-name" : data.MazePlayerName,
+      "difficulty" : data.Difficulty
+      }).subscribe((res) => console.log(res));
   }
 
 }

@@ -1,9 +1,9 @@
 <div>
   <div ng-if="!isGameOn">
-    <form class="form-details" [formGroup]="mazeForm" role="form" (submit)="submitMaze()">
+    <form class="form-details" [formGroup]="mazeForm" role="form" (ngSubmit)="submitMaze(mazeForm.value)">
       <div class="row input-label">
         <label class="form-label" for="MazeWidth">Maze width</label>
-        <input formControlName="MazeWidth" type="number" class="form-control" id="MazeWidth" name="MazeWidth">
+        <input formControlName="MazeWidth" type="number" class="form-control" id="maze-width" name="maze-width">
       </div>
       <div class="row input-label">
         <label class="form-label" for="MazeHeight">Maze height</label>
