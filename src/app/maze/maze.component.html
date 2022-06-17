@@ -1,1 +1,23 @@
-<p>maze works!</p>
+<div>
+  <div ng-if="!isGameOn">
+    <form class="form-details" [formGroup]="mazeForm" role="form" (submit)="submitMaze()">
+      <div class="row input-label">
+        <label class="form-label" for="MazeWidth">Maze width</label>
+        <input formControlName="MazeWidth" type="number" class="form-control" id="MazeWidth" name="MazeWidth">
+      </div>
+      <div class="row input-label">
+        <label class="form-label" for="MazeHeight">Maze height</label>
+        <input formControlName="MazeHeight" type="number" class="form-control" id="MazeHeight" name="MazeHeight">
+      </div>
+      <div class="row input-label">
+        <label class="form-label" for="MazePlayerName">Pony name</label>
+        <input formControlName="MazePlayerName" type="text" class="form-control" id="MazePlayerName" name="MazePlayerName">
+      </div>
+      <div class="row input-label">
+        <label class="form-label" for="Difficulty">Difficulty</label>
+        <input formControlName="Difficulty" type="number" class="form-control" id="Difficulty" name="Difficulty">
+      </div>
+      <button type="submit">Start</button>
+    </form>
+  </div>
+</div>
