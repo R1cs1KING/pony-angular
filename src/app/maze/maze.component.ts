@@ -29,8 +29,6 @@ export class MazeComponent implements OnInit {
   }
 
   submitMaze(data:any) {
-    console.log(data);
-    console.log(data.MazePlayerName);
 
     // need to map the data, because these are the values on the API, but FormBuilder group does not support the usage of "-"
     this.http.post<any>(this.baseURL, {
@@ -40,14 +38,12 @@ export class MazeComponent implements OnInit {
       "difficulty" : data.Difficulty
       }).subscribe({
         next: data => {
-          console.log(data);
           this.mazeId = data.maze_id;
           this.printMaze();
           this.isGameOn = true;
         },
         error: error => {
           var errorMessage = error.message;
-          console.log(errorMessage);
         }
       });
   }
@@ -64,4 +60,17 @@ export class MazeComponent implements OnInit {
     });
   }
 
+  makeMove(direction:string): void {
+    if (direction === "north" || direction === "west" || direction === "east" || direction === "south") {
+      this.http.post(this.baseURL + "/" + this.mazeId, {"direction" : direction}).subscribe({
+        next: data => {
+          console.log(data)
+        },
+        error: error => {
+          var errorMessage = error.message;
+          console.log(errorMessage);
+        }
+      });
+    }
+  }
 }
