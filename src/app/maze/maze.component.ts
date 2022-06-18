@@ -10,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MazeComponent implements OnInit {
 
-  isGameOn:boolean = false;
+  public isGameOn:boolean = false;
   public mazeForm: FormGroup;
-  mazeId:string = "";
+  private mazeId:string = "";
   private baseURL:string = "https://ponychallenge.trustpilot.com/pony-challenge/maze";
-  mazeMap: string = "";
+  public mazeMap: string = "";
 
   constructor(fb: FormBuilder, private http: HttpClient) {
     this.mazeForm = fb.group({
