@@ -17,21 +17,30 @@
         <label class="form-label" for="Difficulty">Difficulty</label>
         <input formControlName="Difficulty" type="number" class="form-control" id="Difficulty" name="Difficulty">
       </div>
-      <button type="submit">Start</button>
+      <button type="submit" class="btn btn-primary">Start</button>
     </form>
   </div>
   <div *ngIf="isGameOn">
     <p style="white-space: pre; font-family: monospace;">{{ mazeMap }}</p>
-    <div class="row">
+    <div>
       <div class="row">
-        <button class="btn-primary" (click)="makeMove('north')">North</button>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4"></div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4">
+          <button class="btn btn-primary" (click)="makeMove('north')">North</button>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4"></div>
       </div>
+      <br>
       <div class="row">
-        <button class="btn-primary" (click)="makeMove('west')">West</button>
-        <button class="btn-primary" (click)="makeMove('east')">East</button>
-      </div>
-      <div class="row">
-        <button class="btn-primary" (click)="makeMove('south')">South</button>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4">
+          <button class="btn btn-primary" (click)="makeMove('west')">West</button>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4">
+          <button class="btn btn-primary" (click)="makeMove('south')">South</button>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4">
+          <button class="btn btn-primary" (click)="makeMove('east')">East</button>
+        </div>
       </div>
     </div>
   </div>
