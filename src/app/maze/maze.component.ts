@@ -11,18 +11,18 @@ import { HttpClient } from '@angular/common/http';
 export class MazeComponent implements OnInit {
 
   public isGameOn:boolean = false;
-  public mazeForm: FormGroup;
+  //public mazeForm: FormGroup;
+  public mazeForm = this.fb.group({
+    MazeWidth : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
+    MazeHeight : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
+    MazePlayerName: ['', Validators.required],
+    Difficulty: [1, Validators.compose([Validators.min(1), Validators.max(10)])]
+  })
   private mazeId:string = "";
   private baseURL:string = "https://ponychallenge.trustpilot.com/pony-challenge/maze";
   public mazeMap: string = "";
 
-  constructor(fb: FormBuilder, private http: HttpClient) {
-    this.mazeForm = fb.group({
-      MazeWidth : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
-      MazeHeight : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
-      MazePlayerName: ['', Validators.required],
-      Difficulty: [1, Validators.compose([Validators.min(1), Validators.max(10)])]
-    });
+  constructor(private fb: FormBuilder, private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -43,8 +43,8 @@ export class MazeComponent implements OnInit {
           this.isGameOn = true;
         },
         error: error => {
-          var errorMessage = error.message;
-          console.log(error);
+          // TODO: needs to be displayed
+          console.log(error.error);
         }
       });
   }
@@ -88,4 +88,6 @@ export class MazeComponent implements OnInit {
       }
     });
   }
+
+  get f() { return this.mazeForm.controls; }
 }

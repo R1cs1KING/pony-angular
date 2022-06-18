@@ -2,21 +2,59 @@
   <div *ngIf="!isGameOn">
     <form class="form-details" [formGroup]="mazeForm" role="form" (ngSubmit)="submitMaze(mazeForm.value)">
       <div class="row input-label">
-        <label class="form-label" for="MazeWidth">Maze width (needs to be a value between 15 and 25)</label>
-        <input formControlName="MazeWidth" type="number" class="form-control" id="maze-width" formControlName="MazeWidth">
+        <label class="form-label" for="MazeWidth">Maze width</label>
+        <input type="number" class="form-control" id="maze-width" formControlName="MazeWidth">
+         <div *ngIf="f.MazeWidth.invalid && (f.MazeWidth.dirty || f.MazeWidth.touched)" class="alert">
+          <div *ngIf="f.MazeWidth.errors?.['required']">
+            Maze Width is required.
+          </div>
+          <div *ngIf="f.MazeWidth.errors?.['min']">
+            Maze Width needs to be at least 15.
+          </div>
+          <div *ngIf="f.MazeWidth.errors?.['max']">
+            Maze Width needs to be maximum 25.
+          </div>
+        </div>
       </div>
       <div class="row input-label">
-        <label class="form-label" for="MazeHeight">Maze height (needs to be a value between 15 and 25)</label>
+        <label class="form-label" for="MazeHeight">Maze height</label>
         <input  type="number" class="form-control" id="MazeHeight" formControlName="MazeHeight">
+        <div *ngIf="f.MazeHeight.invalid && (f.MazeHeight.dirty || f.MazeHeight.touched)" class="alert">
+         <div *ngIf="f.MazeHeight.errors?.['required']">
+           Maze Height is required.
+         </div>
+         <div *ngIf="f.MazeHeight.errors?.['min']">
+           Maze Height needs to be at least 15.
+         </div>
+         <div *ngIf="f.MazeHeight.errors?.['max']">
+           Maze Height needs to be maximum 25.
+         </div>
+       </div>
       </div>
       <div class="row input-label">
         <label class="form-label" for="MazePlayerName">Pony name</label>
         <a href="https://mlpcomic.fandom.com/wiki/List_of_characters">Get inspired here</a>
         <input type="text" class="form-control" id="MazePlayerName" formControlName="MazePlayerName">
+        <div *ngIf="f.MazePlayerName.invalid && (f.MazePlayerName.dirty || f.MazePlayerName.touched)" class="alert">
+         <div *ngIf="f.MazePlayerName.errors?.['required']">
+           Pony name is required.
+         </div>
+       </div>
       </div>
       <div class="row input-label">
-        <label class="form-label" for="Difficulty">Difficulty (needs to be a value between 1 and 10)</label>
+        <label class="form-label" for="Difficulty">Difficulty</label>
         <input type="number" class="form-control" id="Difficulty" formControlName="Difficulty">
+        <div *ngIf="f.Difficulty.invalid && (f.Difficulty.dirty || f.Difficulty.touched)" class="alert">
+         <div *ngIf="f.Difficulty.errors?.['required']">
+           Difficulty is required.
+         </div>
+         <div *ngIf="f.Difficulty.errors?.['min']">
+           Difficulty needs to be at least 15.
+         </div>
+         <div *ngIf="f.Difficulty.errors?.['max']">
+           Difficulty needs to be maximum 25.
+         </div>
+       </div>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="mazeForm.invalid">Start</button>
     </form>
