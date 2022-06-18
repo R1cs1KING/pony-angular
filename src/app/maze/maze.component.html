@@ -24,14 +24,14 @@
     <p style="white-space: pre; font-family: monospace;">{{ mazeMap }}</p>
     <div class="row">
       <div class="row">
-        <button class="btn-primary">North</button>
+        <button class="btn-primary" (click)="makeMove('north')">North</button>
       </div>
       <div class="row">
-        <button class="btn-primary">West</button>
-        <button class="btn-primary">East</button>
+        <button class="btn-primary" (click)="makeMove('west')">West</button>
+        <button class="btn-primary" (click)="makeMove('east')">East</button>
       </div>
       <div class="row">
-        <button class="btn-primary">South</button>
+        <button class="btn-primary" (click)="makeMove('south')">South</button>
       </div>
     </div>
   </div>

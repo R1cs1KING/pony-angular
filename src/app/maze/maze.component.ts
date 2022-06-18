@@ -64,7 +64,9 @@ export class MazeComponent implements OnInit {
     if (direction === "north" || direction === "west" || direction === "east" || direction === "south") {
       this.http.post(this.baseURL + "/" + this.mazeId, {"direction" : direction}).subscribe({
         next: data => {
-          console.log(data)
+          console.log(data);
+          this.getMazeState();
+          this.printMaze();
         },
         error: error => {
           var errorMessage = error.message;
