@@ -73,4 +73,16 @@ export class MazeComponent implements OnInit {
       });
     }
   }
+
+  getMazeState(): any {
+    this.http.get(this.baseURL + '/' + this.mazeId).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: error => {
+        var errorMessage = error.message;
+        console.log(errorMessage);
+      }
+    });
+  }
 }
