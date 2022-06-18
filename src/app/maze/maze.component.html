@@ -2,23 +2,23 @@
   <div *ngIf="!isGameOn">
     <form class="form-details" [formGroup]="mazeForm" role="form" (ngSubmit)="submitMaze(mazeForm.value)">
       <div class="row input-label">
-        <label class="form-label" for="MazeWidth">Maze width</label>
-        <input formControlName="MazeWidth" type="number" class="form-control" id="maze-width" name="maze-width">
+        <label class="form-label" for="MazeWidth">Maze width (needs to be a value between 15 and 25)</label>
+        <input formControlName="MazeWidth" type="number" class="form-control" id="maze-width" formControlName="MazeWidth">
       </div>
       <div class="row input-label">
-        <label class="form-label" for="MazeHeight">Maze height</label>
-        <input  type="number" class="form-control" id="MazeHeight" name="MazeHeight">
+        <label class="form-label" for="MazeHeight">Maze height (needs to be a value between 15 and 25)</label>
+        <input  type="number" class="form-control" id="MazeHeight" formControlName="MazeHeight">
       </div>
       <div class="row input-label">
         <label class="form-label" for="MazePlayerName">Pony name</label>
         <a href="https://mlpcomic.fandom.com/wiki/List_of_characters">Get inspired here</a>
-        <input type="text" class="form-control" id="MazePlayerName" name="MazePlayerName">
+        <input type="text" class="form-control" id="MazePlayerName" formControlName="MazePlayerName">
       </div>
       <div class="row input-label">
-        <label class="form-label" for="Difficulty">Difficulty</label>
-        <input type="number" class="form-control" id="Difficulty" name="Difficulty">
+        <label class="form-label" for="Difficulty">Difficulty (needs to be a value between 1 and 10)</label>
+        <input type="number" class="form-control" id="Difficulty" formControlName="Difficulty">
       </div>
-      <button type="submit" class="btn btn-primary">Start</button>
+      <button type="submit" class="btn btn-primary" [disabled]="mazeForm.invalid">Start</button>
     </form>
   </div>
   <div *ngIf="isGameOn">

@@ -18,10 +18,10 @@ export class MazeComponent implements OnInit {
 
   constructor(fb: FormBuilder, private http: HttpClient) {
     this.mazeForm = fb.group({
-      MazeWidth : new FormControl(Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])),
-      MazeHeight : new FormControl(Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])),
-      MazePlayerName: new FormControl(Validators.compose([Validators.required])),
-      Difficulty: new FormControl(Validators.compose([Validators.min(1), Validators.max(10)]))
+      MazeWidth : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
+      MazeHeight : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
+      MazePlayerName: ['', Validators.required],
+      Difficulty: [1, Validators.compose([Validators.min(1), Validators.max(10)])]
     });
   }
 
@@ -44,6 +44,7 @@ export class MazeComponent implements OnInit {
         },
         error: error => {
           var errorMessage = error.message;
+          console.log(error);
         }
       });
   }
