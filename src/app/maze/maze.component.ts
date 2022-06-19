@@ -75,7 +75,7 @@ export class MazeComponent implements OnInit {
           if (data.state !== "active") {
             this.isGameActive =false;
             if (data.state === "won") {
-              // TODO: set it to wone
+              // TODO: set it to won
             } else {
               // TODO: set it to lost
             }
