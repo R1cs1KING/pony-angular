@@ -69,7 +69,7 @@
     </form>
   </div>
   <div *ngIf="isGameOn">
-    <div>
+    <div *ngIf="isGameActive">
       <p style="white-space: pre; font-family: monospace;">{{ mazeMap }}</p>
       <div>
         <div class="row">
@@ -90,6 +90,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="(!isGameActive && isWon)">
+      You won!
+    </div>
+    <div *ngIf="(!isGameActive && !isWon)">
+      You lost!
     </div>
   </div>
 </div>

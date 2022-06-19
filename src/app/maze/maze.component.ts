@@ -23,6 +23,7 @@ export class MazeComponent implements OnInit {
   public isDisplayingApiErrorMessage: boolean = false;
   public apiErrorMessage: string = "";
   public isGameActive: boolean = false;
+  public isWon: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
   }
@@ -45,6 +46,7 @@ export class MazeComponent implements OnInit {
           this.isDisplayingApiErrorMessage = false;
           this.isGameOn = true;
           this.isGameActive = true;
+          this.isWon = false;
         },
         error: error => {
           this.apiErrorMessage = error.error;
@@ -73,11 +75,12 @@ export class MazeComponent implements OnInit {
           this.getMazeState();
 
           if (data.state !== "active") {
-            this.isGameActive =false;
+            this.isGameActive = false;
             if (data.state === "won") {
               // TODO: set it to won
-            } else {
-              // TODO: set it to lost
+              this.isWon = true;
+            } else if (data.state === "over") {
+              this.isWon = false;
             }
           }
 
