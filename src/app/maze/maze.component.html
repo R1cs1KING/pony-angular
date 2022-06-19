@@ -33,7 +33,6 @@
       </div>
       <div class="row input-label">
         <label class="form-label" for="MazePlayerName">Pony name</label>
-        <a href="https://mlpcomic.fandom.com/wiki/List_of_characters">Get inspired here</a>
         <input type="text" class="form-control" id="MazePlayerName" formControlName="MazePlayerName">
         <div *ngIf="f.MazePlayerName.invalid && (f.MazePlayerName.dirty || f.MazePlayerName.touched)" class="alert">
          <div *ngIf="f.MazePlayerName.errors?.['required']">
@@ -57,6 +56,16 @@
        </div>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="mazeForm.invalid">Start</button>
+      <div *ngIf="isDisplayingApiErrorMessage" class="alert">
+        <div>
+          {{ apiErrorMessage }}
+        </div>
+        <div>
+          Select a different name. For isnpiration visit
+          <a href="https://mlpcomic.fandom.com/wiki/List_of_characters">this</a>
+          site.
+        </div>
+      </div>
     </form>
   </div>
   <div *ngIf="isGameOn">
