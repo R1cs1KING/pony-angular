@@ -45,7 +45,6 @@ export class MazeComponent implements OnInit {
           this.isGameOn = true;
         },
         error: error => {
-          // TODO: needs to be displayed
           this.apiErrorMessage = error.error;
           this.isDisplayingApiErrorMessage = true;
         }
