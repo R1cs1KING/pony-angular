@@ -46,7 +46,6 @@ export class MazeComponent implements OnInit {
           this.isDisplayingApiErrorMessage = false;
           this.isGameOn = true;
           this.isGameActive = true;
-          this.isWon = false;
         },
         error: error => {
           this.apiErrorMessage = error.error;
@@ -107,4 +106,9 @@ export class MazeComponent implements OnInit {
 
   // helps with binding to validation on the HTML side
   get f() { return this.mazeForm.controls; }
+
+  playAgain(): void {
+    this.isWon = false;
+    this.isGameOn = false;
+  }
 }

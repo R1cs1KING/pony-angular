@@ -91,11 +91,18 @@
         </div>
       </div>
     </div>
-    <div *ngIf="(!isGameActive && isWon)">
-      You won!
-    </div>
-    <div *ngIf="(!isGameActive && !isWon)">
-      You lost!
+    <div *ngIf="(!isGameActive)">
+      <div *ngIf="(isWon)">
+        You won!
+      </div>
+      <div *ngIf="(!isWon)">
+        You lost!
+      </div>
+      <div class="row">
+        <div class="col-12" style="display: flex; justify-content: center;">
+          <button class="btn btn-primary" (click)="playAgain()">Play again</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
