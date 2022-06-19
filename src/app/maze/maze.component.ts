@@ -77,14 +77,13 @@ export class MazeComponent implements OnInit {
           if (data.state !== "active") {
             this.isGameActive = false;
             if (data.state === "won") {
-              // TODO: set it to won
               this.isWon = true;
             } else if (data.state === "over") {
               this.isWon = false;
             }
+          } else if (data.state === "active") {
+            this.printMaze();
           }
-
-          this.printMaze();
         },
         error: error => {
           var errorMessage = error.message;
