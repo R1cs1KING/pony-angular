@@ -67,10 +67,20 @@ export class MazeComponent implements OnInit {
 
   makeMove(direction:string): void {
     if (direction === "north" || direction === "west" || direction === "east" || direction === "south") {
-      this.http.post(this.baseURL + "/" + this.mazeId, {"direction" : direction}).subscribe({
+      this.http.post<any>(this.baseURL + "/" + this.mazeId, {"direction" : direction}).subscribe({
         next: data => {
           console.log(data);
           this.getMazeState();
+
+          if (data.state !== "active") {
+            this.isGameActive =false;
+            if (data.state === "won") {
+              // TODO: set it to wone
+            } else {
+              // TODO: set it to lost
+            }
+          }
+
           this.printMaze();
         },
         error: error => {
@@ -93,5 +103,6 @@ export class MazeComponent implements OnInit {
     });
   }
 
+  // helps with binding to validation on the HTML side
   get f() { return this.mazeForm.controls; }
 }
