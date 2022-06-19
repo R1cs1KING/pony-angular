@@ -10,18 +10,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MazeComponent implements OnInit {
 
-  public isGameOn:boolean = false;
+  public isGameOn: boolean = false;
   public mazeForm = this.fb.group({
     MazeWidth : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
     MazeHeight : [15, Validators.compose([Validators.required, Validators.min(15), Validators.max(25)])],
     MazePlayerName: ['', Validators.required],
     Difficulty: [1, Validators.compose([Validators.min(1), Validators.max(10)])]
   })
-  private mazeId:string = "";
+  private mazeId: string = "";
   private baseURL:string = "https://ponychallenge.trustpilot.com/pony-challenge/maze";
   public mazeMap: string = "";
-  public isDisplayingApiErrorMessage:boolean = false;
-  public apiErrorMessage:string = "";
+  public isDisplayingApiErrorMessage: boolean = false;
+  public apiErrorMessage: string = "";
+  public isGameActive: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
   }
@@ -43,6 +44,7 @@ export class MazeComponent implements OnInit {
           this.printMaze();
           this.isDisplayingApiErrorMessage = false;
           this.isGameOn = true;
+          this.isGameActive = true;
         },
         error: error => {
           this.apiErrorMessage = error.error;
