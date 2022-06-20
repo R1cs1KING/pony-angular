@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="!isGameOn">
     <form class="form-details" [formGroup]="mazeForm" role="form" (ngSubmit)="submitMaze(mazeForm.value)">
-      <div class="row input-label">
+      <div class="row input-label width">
         <label class="form-label" for="MazeWidth">Maze width</label>
         <input type="number" class="form-control" id="maze-width" formControlName="MazeWidth">
          <div *ngIf="f.MazeWidth.invalid && (f.MazeWidth.dirty || f.MazeWidth.touched)" class="alert">
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="row input-label">
+      <div class="row input-label height">
         <label class="form-label" for="MazeHeight">Maze height</label>
         <input  type="number" class="form-control" id="MazeHeight" formControlName="MazeHeight">
         <div *ngIf="f.MazeHeight.invalid && (f.MazeHeight.dirty || f.MazeHeight.touched)" class="alert">
@@ -31,7 +31,7 @@
          </div>
        </div>
       </div>
-      <div class="row input-label">
+      <div class="row input-label name">
         <label class="form-label" for="MazePlayerName">Pony name</label>
         <input type="text" class="form-control" id="MazePlayerName" formControlName="MazePlayerName">
         <div *ngIf="f.MazePlayerName.invalid && (f.MazePlayerName.dirty || f.MazePlayerName.touched)" class="alert">
@@ -40,7 +40,7 @@
          </div>
        </div>
       </div>
-      <div class="row input-label">
+      <div class="row input-label difficulty">
         <label class="form-label" for="Difficulty">Difficulty</label>
         <input type="number" class="form-control" id="Difficulty" formControlName="Difficulty">
         <div *ngIf="f.Difficulty.invalid && (f.Difficulty.dirty || f.Difficulty.touched)" class="alert">
