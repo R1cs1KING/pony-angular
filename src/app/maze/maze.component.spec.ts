@@ -51,4 +51,40 @@ describe('MazeComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.difficulty label')?.textContent).toMatch('Difficulty');
   });
+
+  it('should render North button', () => {
+    const fixture = TestBed.createComponent(MazeComponent);
+    fixture.componentInstance.isGameOn = true;
+    fixture.componentInstance.isGameActive = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.north button')?.textContent).toMatch('North');
+  });
+
+  it('should render West button', () => {
+    const fixture = TestBed.createComponent(MazeComponent);
+    fixture.componentInstance.isGameOn = true;
+    fixture.componentInstance.isGameActive = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.west button')?.textContent).toMatch('West');
+  });
+
+  it('should render South button', () => {
+    const fixture = TestBed.createComponent(MazeComponent);
+    fixture.componentInstance.isGameOn = true;
+    fixture.componentInstance.isGameActive = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.south button')?.textContent).toMatch('South');
+  });
+
+  it('should render East button', () => {
+    const fixture = TestBed.createComponent(MazeComponent);
+    fixture.componentInstance.isGameOn = true;
+    fixture.componentInstance.isGameActive = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.east button')?.textContent).toMatch('East');
+  });
 });
