@@ -68,9 +68,14 @@
       </div>
     </form>
   </div>
-  <div *ngIf="isGameOn">
+  <div class="col-12" *ngIf="isGameOn">
     <div *ngIf="isGameActive">
-      <p style="white-space: pre; font-family: monospace;">{{ mazeMap }}</p>
+      <div class="d-block d-lg-none">
+        <span style="white-space: pre; font-family: monospace; display: block; font-size: 1.65vw;">{{ mazeMap }}</span>
+      </div>
+      <div class="d-none d-lg-block">
+        <span style="white-space: pre; font-family: monospace; display: block;">{{ mazeMap }}</span>
+      </div>
       <div>
         <div class="row">
           <div class="col-12 north" style="display: flex; justify-content: center;">
