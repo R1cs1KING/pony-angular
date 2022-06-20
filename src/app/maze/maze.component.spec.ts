@@ -88,7 +88,7 @@ describe('MazeComponent', () => {
     expect(compiled.querySelector('.east button')?.textContent).toMatch('East');
   });
 
-  it('should render East button', () => {
+  it('should render Play again button', () => {
     const fixture = TestBed.createComponent(MazeComponent);
     fixture.componentInstance.isGameOn = true;
     fixture.componentInstance.isGameActive = false;
