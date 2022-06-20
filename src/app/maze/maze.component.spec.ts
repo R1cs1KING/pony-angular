@@ -87,4 +87,13 @@ describe('MazeComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.east button')?.textContent).toMatch('East');
   });
+
+  it('should render East button', () => {
+    const fixture = TestBed.createComponent(MazeComponent);
+    fixture.componentInstance.isGameOn = true;
+    fixture.componentInstance.isGameActive = false;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('button')?.textContent).toMatch('Play again');
+  });
 });
