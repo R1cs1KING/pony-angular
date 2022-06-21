@@ -6,6 +6,10 @@ Trustpilot challenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
+## Demo
+
+If you would like to see a demo without installing or downloading anythin, you can see it on the following link: https://pony-angular.herokuapp.com/
+
 ## Install Angular
 
 Run `npm install -g @angular/cli`
