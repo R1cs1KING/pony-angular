@@ -16,6 +16,7 @@
           </div>
         </div>
       </div>
+
       <div class="form-group input-label height">
         <label class="form-label" for="MazeHeight">Maze height</label>
         <input  type="number" class="form-control" id="MazeHeight" formControlName="MazeHeight">
@@ -31,6 +32,7 @@
          </div>
        </div>
       </div>
+
       <div class="form-group input-label name">
         <label class="form-label" for="MazePlayerName">Pony name</label>
         <input type="text" class="form-control" id="MazePlayerName" formControlName="MazePlayerName">
@@ -40,6 +42,7 @@
          </div>
        </div>
       </div>
+
       <div class="form-group input-label difficulty">
         <label class="form-label" for="Difficulty">Difficulty</label>
         <input type="number" class="form-control" id="Difficulty" formControlName="Difficulty">
@@ -55,7 +58,9 @@
          </div>
        </div>
       </div>
+
       <button type="submit" class="btn btn-primary" [disabled]="mazeForm.invalid">Start</button>
+
       <div *ngIf="isDisplayingApiErrorMessage" class="alert">
         <div>
           {{ apiErrorMessage }}
@@ -68,34 +73,54 @@
       </div>
     </form>
   </div>
+
   <div class="col-12" *ngIf="isGameOn">
     <div *ngIf="isGameActive">
       <div class="d-block d-lg-none">
         <span style="white-space: pre; font-family: monospace; display: block; font-size: 1.65vw;">{{ mazeMap }}</span>
       </div>
+
       <div class="d-none d-lg-block">
         <span style="white-space: pre; font-family: monospace; display: block;">{{ mazeMap }}</span>
       </div>
+
+      <div class="row">
+        <div class="col-12">
+          <span>Your location: {{ playerLocation }}</span>
+        </div>
+        <div class="col-12">
+          <span>Domokun location: {{ domokunLocation }}</span>
+        </div>
+        <div class="col-12">
+          <span>Endpoint location: {{ endPointLocation }}</span>
+        </div>
+      </div>
+
       <div>
         <div class="row">
           <div class="col-12 north" style="display: flex; justify-content: center;">
             <button class="btn btn-primary" (click)="makeMove('north')" [disabled]="!isGameActive">North</button>
           </div>
         </div>
+
         <br>
+
         <div class="row">
           <div class="col-5 west" style="display: flex; justify-content: right;">
             <button class="btn btn-primary" (click)="makeMove('west')" [disabled]="!isGameActive">West</button>
           </div>
+
           <div class="col-2 south" style="display: flex; justify-content: center;">
             <button class="btn btn-primary" (click)="makeMove('south')" [disabled]="!isGameActive">South</button>
           </div>
+
           <div class="col-5 east" style="display: flex; justify-content: left;">
             <button class="btn btn-primary" (click)="makeMove('east')" [disabled]="!isGameActive">East</button>
           </div>
         </div>
       </div>
     </div>
+
     <div *ngIf="(!isGameActive)">
       <div *ngIf="(isWon)">
         You won!

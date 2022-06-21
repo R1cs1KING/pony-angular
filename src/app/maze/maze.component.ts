@@ -24,6 +24,9 @@ export class MazeComponent implements OnInit {
   public apiErrorMessage: string = "";
   public isGameActive: boolean = false;
   public isWon: boolean = false;
+  public playerLocation: number = 0;
+  public domokunLocation: number = 0;
+  public endPointLocation: number = 0;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
   }
@@ -58,6 +61,7 @@ export class MazeComponent implements OnInit {
     this.http.get(this.baseURL + "/" + this.mazeId + "/print", {responseType: 'text'}).subscribe({
       next: data => {
         this.mazeMap = data;
+        this.getMazeState();
       },
       error: error => {
         var errorMessage = error.message;
@@ -70,17 +74,17 @@ export class MazeComponent implements OnInit {
     if (direction === "north" || direction === "west" || direction === "east" || direction === "south") {
       this.http.post<any>(this.baseURL + "/" + this.mazeId, {"direction" : direction}).subscribe({
         next: data => {
-          console.log(data);
           this.getMazeState();
+          var state = data["state"];
 
-          if (data.state !== "active") {
+          if (state !== "active") {
             this.isGameActive = false;
-            if (data.state === "won") {
+            if (state === "won") {
               this.isWon = true;
-            } else if (data.state === "over") {
+            } else if (state === "over") {
               this.isWon = false;
             }
-          } else if (data.state === "active") {
+          } else if (state === "active") {
             this.printMaze();
           }
         },
@@ -93,9 +97,11 @@ export class MazeComponent implements OnInit {
   }
 
   getMazeState(): any {
-    this.http.get(this.baseURL + '/' + this.mazeId).subscribe({
+    this.http.get<any>(this.baseURL + '/' + this.mazeId).subscribe({
       next: data => {
-        console.log(data);
+        this.playerLocation = data["pony"];
+        this.domokunLocation = data["domokun"];
+        this.endPointLocation = data["end-point"];
       },
       error: error => {
         var errorMessage = error.message;
