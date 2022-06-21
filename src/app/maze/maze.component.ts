@@ -60,7 +60,7 @@ export class MazeComponent implements OnInit {
   printMaze(): void {
     this.http.get(this.baseURL + "/" + this.mazeId + "/print", {responseType: 'text'}).subscribe({
       next: data => {
-        this.mazeMap = data;
+        this.mazeMap = this.renderCharacters(data);
         this.getMazeState();
       },
       error: error => {
@@ -116,5 +116,13 @@ export class MazeComponent implements OnInit {
   playAgain(): void {
     this.isWon = false;
     this.isGameOn = false;
+  }
+
+  renderCharacters(mazeText: string): string {
+    mazeText = mazeText.replace('P ', '🦄');
+    mazeText = mazeText.replace('D ', '🧟‍♀️');
+    mazeText = mazeText.replace('E ', '🚪');
+
+    return mazeText;
   }
 }
