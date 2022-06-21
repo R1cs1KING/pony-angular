@@ -8,3 +8,13 @@
   background-color: #995387;
   border-color: #723f66;
 }
+
+.location-description {
+  color: #6c25c8;
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.location-number {
+  font-weight: bold;
+}

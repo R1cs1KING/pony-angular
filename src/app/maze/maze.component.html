@@ -85,14 +85,29 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
-          <span>Your location: {{ playerLocation }}</span>
+        <div class="col-12 location-description">
+          <span>
+            Your location:
+            <span class="location-description location-number">
+              {{ playerLocation }}
+            </span>
+          </span>
         </div>
-        <div class="col-12">
-          <span>Domokun location: {{ domokunLocation }}</span>
+        <div class="col-12 location-description">
+          <span>
+            Domokun location:
+            <span class="location-description location-number">
+              {{ domokunLocation }}
+            </span>
+          </span>
         </div>
-        <div class="col-12">
-          <span>Endpoint location: {{ endPointLocation }}</span>
+        <div class="col-12 location-description">
+          <span>
+            Endpoint location:
+            <span class="location-description location-number">
+              {{ endPointLocation }}
+            </span>
+          </span>
         </div>
       </div>
 
